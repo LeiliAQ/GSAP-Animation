@@ -99,7 +99,19 @@
 					.to($body,3,{backgroundColor:colors[2]},'+=2')
 					.to($body,3,{backgroundColor:colors[3]},'+=2')
 				//start falling leaves
+				var leavesTl= new TimelineMax({repeat:-1,repeatDelay:2})
+				leavesTl
+					.to("#brownLeaf",10+Math.random()*10,{y:'+=1200',autoAlpha:1,onComplete:repeatFall,onCompleteParams:['#brownLeaf'],ease:Linear.easeNone},'-=5')
+					.to("#redLeaf",10+Math.random()*10,{y:'+=1200',autoAlpha:1,onComplete:repeatFall,onCompleteParams:['#redLeaf'],ease:Linear.easeNone},'-=5')
+					.to("#orangeLeaf",10+Math.random()*10,{y:'+=1200',autoAlpha:1,onComplete:repeatFall,onCompleteParams:['#orangeLeaf'],ease:Linear.easeNone},'-=5')
 
+				function repeatFall(leafID){
+					var range=Math.random()*800, offset=400,
+					newXPosition=range-offset;
+					leavesTl
+						.set(leafID,{x:newXPosition,y:-100,autoAlpha:0.2})
+						.to(leafID,10+Math.random()*10,{y:'+=1200',autoAlpha:1,onComplete:repeatFall,onCompleteParams:[leafID],ease:Linear.easeNone},'-=5')
+				}
 			}
 		return greetingTl
 	}
