@@ -92,13 +92,14 @@
 			function startLoops(){
 				//start background color loop
 				var colors=['#edcc93','#f7e3ae','#f3ebcc','#edcc93']
-				var bgTl= new TimelineMax({repeat:-1})
+				var bgTl= new TimelineMax({repeat:-1,repeatDelay:2})
 				bgTl
 					.to($body,3,{backgroundColor:colors[0]})
-					.to($body,3,{backgroundColor:colors[1]})
-					.to($body,3,{backgroundColor:colors[2]})
-					.to($body,3,{backgroundColor:colors[3]})
+					.to($body,3,{backgroundColor:colors[1]},'+=2')
+					.to($body,3,{backgroundColor:colors[2]},'+=2')
+					.to($body,3,{backgroundColor:colors[3]},'+=2')
 				//start falling leaves
+
 			}
 		return greetingTl
 	}
