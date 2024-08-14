@@ -13,7 +13,8 @@
 		$birdEyes= $bird.find('#leftEye,#rightEye'),
 		$nest= $('#NestAndLeaves'),
 		$tree= $('#tree_trunk'),
-		$cardContainer=$('.card.container')
+		$cardContainer=$('.card.container'),
+		$body=$('body')
 
 	// declare actors 
 
@@ -84,10 +85,21 @@
 	function enterGreeting(){
 		var greetingTl=new TimelineMax()
 		greetingTl
-			.fromTo($textLine1,1,{y:'-=50',autoAlpha:0},{y:0,autoAlpha:1})
+			.fromTo($textLine1,1,{y:'-=50',autoAlpha:0},{y:0,autoAlpha:1,onComplete:startLoops})
 			.fromTo($textLine2,1,{y:'-=25',autoAlpha:0},{y:0,autoAlpha:1})
 			.staggerFromTo($textGreeting,0.5,{scale:2,autoAlpha:0,transformOrigin:'center center'}
 				,{scale:1,autoAlpha:1,transformOrigin:'center center'},0.02)
+			function startLoops(){
+				//start background color loop
+				var colors=['#edcc93','#f7e3ae','#f3ebcc','#edcc93']
+				var bgTl= new TimelineMax({repeat:-1})
+				bgTl
+					.to($body,3,{backgroundColor:colors[0]})
+					.to($body,3,{backgroundColor:colors[1]})
+					.to($body,3,{backgroundColor:colors[2]})
+					.to($body,3,{backgroundColor:colors[3]})
+				//start falling leaves
+			}
 		return greetingTl
 	}
 	// the GO function ...to kick things all off
