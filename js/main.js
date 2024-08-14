@@ -15,7 +15,6 @@
 		$tree= $('#tree_trunk'),
 		$cardContainer=$('.card.container')
 
-
 	// declare actors 
 
 	// clear stage 
@@ -61,6 +60,14 @@
 			.set($birdHat,{rotation:12,x:'+=6'})
 			.to($bird,1.4,{y:'-=39',autoAlpha:1,ease:Power4.easeInOut},'nest-pop-in+=0.1')
 			.add('bird-peeking')
+			.set($birdEyes,{autoAlpha:0})
+			.set($birdEyes,{autoAlpha:1},'+=0.2')
+			.set($birdEyes,{autoAlpha:0},'+=0.3')
+			.set($birdEyes,{autoAlpha:1},'+=0.3')
+			.add('bird-blinks')
+			.to($bird,0.8,{y:'-=34',ease:Power4.easeInOut})
+			.to($bird,0.8,{y:'+=8',ease:Power4.easeInOut})
+			
 		return treestuffTl
 	}
 	// enter the greeting text
