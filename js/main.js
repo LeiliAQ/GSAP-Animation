@@ -109,7 +109,7 @@
 					var range=Math.random()*800, offset=400,
 					newXPosition=range-offset;
 					leavesTl
-						.set(leafID,{x:newXPosition,y:-100,autoAlpha:0.2})
+						.set(leafID,{x:newXPosition,y:-100,autoAlpha:0.2,rotation:Math.random()*360})
 						.to(leafID,10+Math.random()*10,{y:'+=1200',autoAlpha:1,onComplete:repeatFall,onCompleteParams:[leafID],ease:Linear.easeNone},'-=5')
 				}
 			}
