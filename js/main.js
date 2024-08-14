@@ -50,7 +50,19 @@
 	}
 
 	// enter tree
-
+	function enterTreestuff(){
+		var treestuffTl= new TimelineMax()
+		treestuffTl
+			.staggerFromTo($treeLeaves,0.5,{scale:0.2,autoAlpha:0,transformOrigin:'center bottom'},
+				{scale:1,autoAlpha:1,transformOrigin:'center bottom',ease:Back.easeInOut},0.02,'-=0.5')
+			.fromTo($nest,1,{y:0,scale:0.2,autoAlpha:0,transformOrigin:'center center'},{y:'-=15',scale:1,autoAlpha:1,transformOrigin:'center center',ease:Elastic.easeInOut},'+=0.1')
+			.to($nest,0.3,{y:'+=15',ease:Bounce.easeInOut},'-=0.2')
+			.add('nest-pop-in')
+			.set($birdHat,{rotation:12,x:'+=6'})
+			.to($bird,1.4,{y:'-=39',autoAlpha:1,ease:Power4.easeInOut},'nest-pop-in+=0.1')
+			.add('bird-peeking')
+		return treestuffTl
+	}
 	// enter the greeting text
 	
 	// the GO function ...to kick things all off
@@ -59,6 +71,7 @@
 		masterTl
 			.add(clearStage(),'scene-clear-stage')
 			.add(enterFloorVegetation(),'scene-floor-vegetation')
+			.add(enterTreestuff(),'scene-tree-stuff')
 		// Add a child timeline to masterTl
 	}
 	go()
